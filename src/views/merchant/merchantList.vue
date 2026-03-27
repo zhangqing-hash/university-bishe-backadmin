@@ -59,20 +59,21 @@
       :page-sizes="[10, 20, 50]" :page-size="pageSize" layout="total, sizes, prev, pager, next, jumper" :total="total"
       style="margin-top: 20px; text-align: right;">
     </el-pagination>
+    <audit-model ref="auditModelref" />
   </el-card>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
 import { ElMessage, ElMessageBox } from 'element-plus'
-
+import auditModel from '@/components/auditModel.vue'
 // 搜索表单
 const searchForm = ref({
   name: '',
   address: '',
   status: ''
 })
-
+const auditModelref = ref(null)
 // 商家列表数据（模拟）
 const merchantList = ref([
   { id: 1, name: '宜宾柑橘合作社', address: '宜宾', productType: '柑橘', status: 'normal' },
@@ -117,18 +118,6 @@ const handleCurrentChange = (val) => {
 const handleSelectionChange = (val) => {
   selectedRows.value = val
 }
-
-// 审核
-const handleAudit = (row) => {
-  ElMessageBox.confirm('是否审核通过该商家？', '提示', {
-    confirmButtonText: '确定',
-    cancelButtonText: '取消'
-  }).then(() => {
-    row.status = 'normal'
-    ElMessage.success('审核通过')
-  })
-}
-
 // 编辑
 const handleEdit = (row) => {
   ElMessage.info(`编辑商家：${row.name}`)
@@ -147,15 +136,12 @@ const handleDelete = (row) => {
 }
 
 // 批量审核
-const handleBatchAudit = () => {
-  if (selectedRows.value.length === 0) {
-    ElMessage.warning('请选择要审核的商家')
-    return
-  }
-  selectedRows.value.forEach(row => {
-    row.status = 'normal'
-  })
-  ElMessage.success(`批量审核通过 ${selectedRows.value.length} 个商家`)
+// const auditModelref = ref(null)
+
+// 审核
+const handleAudit = (row) => {
+  // 调用子组件的 open 方法，打开弹窗
+  auditModelref.value.open(row)
 }
 
 // 批量删除

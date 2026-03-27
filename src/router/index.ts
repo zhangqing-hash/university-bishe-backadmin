@@ -24,38 +24,46 @@ const routes = [
         meta: { title: '青琦农供 - 首页' },
       },
       // 商家管理
-      // {
-      //   path: 'merchant/list',
-      //   name: 'merchantList',
-      //   component: () => import('../views/merchant/merchantList.vue'),
-      //   meta: { title: '青琦农供 - 商家管理列表' },
-      // },
+      {
+        path: 'merchant/list',
+        name: 'merchantList',
+        component: () => import('../views/merchant/merchantList.vue'),
+        meta: { title: '青琦农供 - 商家管理列表' },
+      },
       // 可以按需放开其他页面
-      // {
-      //   path: 'merchant/audit',
-      //   name: 'merchantAudit',
-      //   component: () => import('../views/merchant/MerchantAudit.vue'),
-      // },
-      // {
-      //   path: 'merchant/statistics',
-      //   name: 'merchantStatistics',
-      //   component: () => import('../views/merchant/MerchantStatistics.vue'),
-      // },
-      // {
-      //   path: 'user/list',
-      //   name: 'userList',
-      //   component: () => import('../views/user/UserList.vue'),
-      // },
-      // {
-      //   path: 'user/permission',
-      //   name: 'userPermission',
-      //   component: () => import('../views/user/UserPermission.vue'),
-      // },
-      // {
-      //   path: 'system/config',
-      //   name: 'systemConfig',
-      //   component: () => import('../views/system/SystemConfig.vue'),
-      // },
+      {
+        //审核
+        path: 'merchant/audit',
+        name: 'merchantAudit',
+        component: () => import('../views/merchant/merchantAudit.vue'),
+      },
+      {
+        //统计
+        path: 'merchant/statistics',
+        name: 'merchantStatistics',
+        component: () => import('../views/merchant/merchantStatistics.vue'),
+      },
+      {
+        path: 'user/list',
+        name: 'userList',
+        component: () => import('../views/user/userList.vue'),
+      },
+      {
+        path: 'user/permission',
+        name: 'userPermission',
+        component: () => import('../views/user/userPermission.vue'),
+      },
+      {
+        path: 'system/config',
+        name: 'systemConfig',
+        component: () => import('../views/system/systemConfig.vue'),
+      },
+      //订单管理
+      {
+        path: 'shop/list',
+        name: 'shopList',
+        component: () => import('../views/shop/shopList.vue'),
+      },
     ],
   },
   // 404 页面（可选）

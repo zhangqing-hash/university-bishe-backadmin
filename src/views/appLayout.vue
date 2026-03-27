@@ -34,6 +34,15 @@
         <el-sub-menu index="4">
           <template #title>
             <el-icon>
+              <List />
+            </el-icon>
+            <span>订单管理</span>
+          </template>
+          <el-menu-item index="/shop/list">销售单管理</el-menu-item>
+        </el-sub-menu>
+        <el-sub-menu index="5">
+          <template #title>
+            <el-icon>
               <Setting />
             </el-icon>
             <span>系统设置</span>
@@ -71,7 +80,7 @@
 import { useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
 // 引入 Element Plus 图标
-import { House, Shop, User, Setting } from '@element-plus/icons-vue'
+import { House, Shop, User, Setting, List } from '@element-plus/icons-vue'
 
 const router = useRouter()
 
